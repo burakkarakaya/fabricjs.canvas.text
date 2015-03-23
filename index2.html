@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=0.7, maximum-scale=0.7, user-scalable=0"/>
+<title>FabricJs Canvas Text</title>
+<link rel="stylesheet" href="css/style.css" />
+<script type="text/javascript" src="https://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/webfont/1.4.7/webfont.js"></script>
+<script type="text/javascript" src="http://code.createjs.com/createjs-2013.12.12.min.js"></script>
+</head>
+
+<body>
+<div class="wrapper">
+  <canvas width="568" height="498" id="canvas"></canvas>
+</div>
+<div class="property"> 
+  <!-- { 'x': 100, 'y': 100, 'fonts':{ 'font-family': '00611regular', 'font-size': 30, 'font-color': '#000' }, 'transform': { 'regX': 0, 'regY': 0, 'rotation': -90, 'scaleX': 1, 'scaleY': 1, 'skewX': 1, 'skewY': 1 } } -->
+  <ul class="settings">
+    <li> <span>text:</span>
+      <input type="text" rel="text" value="" />
+    </li>
+    <li> <span>left:</span>
+      <input type="number" rel="x" value="445" />
+    </li>
+    <li> <span>top:</span>
+      <input type="number" rel="y" value="450" />
+    </li>
+    <li> <span>rotation:</span>
+      <input type="number" rel="rotation" value="-45" />
+    </li>
+    <li> <span>scaleX:</span>
+      <input type="number" rel="scaleX" value="0" />
+    </li>
+    <li> <span>scaleY:</span>
+      <input type="number" rel="scaleY" value="0" />
+    </li>
+    <li> <span>skewX:</span>
+      <input type="number" rel="skewX" value="0" />
+    </li>
+    <li> <span>skewY:</span>
+      <input type="number" rel="skewY" value="0" />
+    </li>
+  </ul>
+</div>
+<script type="text/javascript">
+
+// MOBILE DETECT
+var mobile=function(){return{detect:function(){var uagent=navigator.userAgent.toLowerCase();var list=this.mobiles;var ismobile=false;for(var d=0;d<list.length;d+=1)if(uagent.indexOf(list[d])!=-1)ismobile=true;return ismobile},mobiles:["midp","240x320","blackberry","netfront","nokia","panasonic","portalmmm","sharp","sie-","sonyericsson","symbian","windows ce","benq","mda","mot-","opera mini","philips","pocket pc","sagem","samsung","sda","sgh-","vodafone","xda","palm","iphone","ipod","android","ipad"]}}();
+
+// EASING PLUGIN
+jQuery.easing["jswing"]=jQuery.easing["swing"];
+jQuery.extend(jQuery.easing,{def:"easeOutQuad",swing:function(x,t,b,c,d){return jQuery.easing[jQuery.easing.def](x,t,b,c,d)},easeInQuad:function(x,t,b,c,d){return c*(t/=d)*t+b},easeOutQuad:function(x,t,b,c,d){return-c*(t/=d)*(t-2)+b},easeInOutQuad:function(x,t,b,c,d){if((t/=d/2)<1)return c/2*t*t+b;return-c/2*(--t*(t-2)-1)+b},easeInCubic:function(x,t,b,c,d){return c*(t/=d)*t*t+b},easeOutCubic:function(x,t,b,c,d){return c*((t=t/d-1)*t*t+1)+b},easeInOutCubic:function(x,t,b,c,d){if((t/=d/2)<1)return c/
+2*t*t*t+b;return c/2*((t-=2)*t*t+2)+b},easeInQuart:function(x,t,b,c,d){return c*(t/=d)*t*t*t+b},easeOutQuart:function(x,t,b,c,d){return-c*((t=t/d-1)*t*t*t-1)+b},easeInOutQuart:function(x,t,b,c,d){if((t/=d/2)<1)return c/2*t*t*t*t+b;return-c/2*((t-=2)*t*t*t-2)+b},easeInQuint:function(x,t,b,c,d){return c*(t/=d)*t*t*t*t+b},easeOutQuint:function(x,t,b,c,d){return c*((t=t/d-1)*t*t*t*t+1)+b},easeInOutQuint:function(x,t,b,c,d){if((t/=d/2)<1)return c/2*t*t*t*t*t+b;return c/2*((t-=2)*t*t*t*t+2)+b},easeInSine:function(x,
+t,b,c,d){return-c*Math.cos(t/d*(Math.PI/2))+c+b},easeOutSine:function(x,t,b,c,d){return c*Math.sin(t/d*(Math.PI/2))+b},easeInOutSine:function(x,t,b,c,d){return-c/2*(Math.cos(Math.PI*t/d)-1)+b},easeInExpo:function(x,t,b,c,d){return t==0?b:c*Math.pow(2,10*(t/d-1))+b},easeOutExpo:function(x,t,b,c,d){return t==d?b+c:c*(-Math.pow(2,-10*t/d)+1)+b},easeInOutExpo:function(x,t,b,c,d){if(t==0)return b;if(t==d)return b+c;if((t/=d/2)<1)return c/2*Math.pow(2,10*(t-1))+b;return c/2*(-Math.pow(2,-10*--t)+2)+b},
+easeInCirc:function(x,t,b,c,d){return-c*(Math.sqrt(1-(t/=d)*t)-1)+b},easeOutCirc:function(x,t,b,c,d){return c*Math.sqrt(1-(t=t/d-1)*t)+b},easeInOutCirc:function(x,t,b,c,d){if((t/=d/2)<1)return-c/2*(Math.sqrt(1-t*t)-1)+b;return c/2*(Math.sqrt(1-(t-=2)*t)+1)+b},easeInElastic:function(x,t,b,c,d){var s=1.70158;var p=0;var a=c;if(t==0)return b;if((t/=d)==1)return b+c;if(!p)p=d*0.3;if(a<Math.abs(c)){a=c;var s=p/4}else var s=p/(2*Math.PI)*Math.asin(c/a);return-(a*Math.pow(2,10*(t-=1))*Math.sin((t*d-s)*(2*
+Math.PI)/p))+b},easeOutElastic:function(x,t,b,c,d){var s=1.70158;var p=0;var a=c;if(t==0)return b;if((t/=d)==1)return b+c;if(!p)p=d*0.3;if(a<Math.abs(c)){a=c;var s=p/4}else var s=p/(2*Math.PI)*Math.asin(c/a);return a*Math.pow(2,-10*t)*Math.sin((t*d-s)*(2*Math.PI)/p)+c+b},easeInOutElastic:function(x,t,b,c,d){var s=1.70158;var p=0;var a=c;if(t==0)return b;if((t/=d/2)==2)return b+c;if(!p)p=d*(0.3*1.5);if(a<Math.abs(c)){a=c;var s=p/4}else var s=p/(2*Math.PI)*Math.asin(c/a);if(t<1)return-0.5*(a*Math.pow(2,
+10*(t-=1))*Math.sin((t*d-s)*(2*Math.PI)/p))+b;return a*Math.pow(2,-10*(t-=1))*Math.sin((t*d-s)*(2*Math.PI)/p)*0.5+c+b},easeInBack:function(x,t,b,c,d,s){if(s==undefined)s=1.70158;return c*(t/=d)*t*((s+1)*t-s)+b},easeOutBack:function(x,t,b,c,d,s){if(s==undefined)s=1.70158;return c*((t=t/d-1)*t*((s+1)*t+s)+1)+b},easeInOutBack:function(x,t,b,c,d,s){if(s==undefined)s=1.70158;if((t/=d/2)<1)return c/2*(t*t*(((s*=1.525)+1)*t-s))+b;return c/2*((t-=2)*t*(((s*=1.525)+1)*t+s)+2)+b},easeInBounce:function(x,t,
+b,c,d){return c-jQuery.easing.easeOutBounce(x,d-t,0,c,d)+b},easeOutBounce:function(x,t,b,c,d){if((t/=d)<1/2.75)return c*(7.5625*t*t)+b;else if(t<2/2.75)return c*(7.5625*(t-=1.5/2.75)*t+0.75)+b;else if(t<2.5/2.75)return c*(7.5625*(t-=2.25/2.75)*t+0.9375)+b;else return c*(7.5625*(t-=2.625/2.75)*t+0.984375)+b},easeInOutBounce:function(x,t,b,c,d){if(t<d/2)return jQuery.easing.easeInBounce(x,t*2,0,c,d)*0.5+b;return jQuery.easing.easeOutBounce(x,t*2-d,0,c,d)*0.5+c*0.5+b}});
+
+
+// 
+/*
+var canvas = document.getElementById( 'canvas' ), 
+	scene = new createjs.Stage( canvas ),
+	data = {
+		'type1': [
+			{ 'x': 100, 'y': 100, 'fonts':{ 'font-family': '00611regular', 'font-size': 30, 'font-color': '#000' }, 'transform': { 'regX': 0, 'regY': 0, 'rotation': -90, 'scaleX': 1, 'scaleY': 1, 'skewX': 1, 'skewY': 1 } }
+		]
+	};
+	
+function init(){	
+	createjs.Touch.enable( scene );
+	var	txt = new createjs.Text('A & K', '20px brush455_btregular');
+   		txt.x = 445;
+		txt.y = 450;
+		txt.lineWidth = 15;
+		txt.regY = Math.round( txt.getBounds().height );
+		//txt.rotation = -90;
+	
+    scene.addChild( txt );	
+	scene.update();
+}
+
+init();    
+*/
+
+
+
+
+// forked from djankey's "EaselJS Text + Google Web Fonts" http://jsdo.it/djankey/zeA2
+function init() {    
+	var canvas = document.getElementById("canvas");
+    if (!canvas || !canvas.getContext) return;
+		
+    var stage, myTxt;
+    var txt = "A & K";
+    
+	stage = new createjs.Stage(canvas);
+	stage.mouseEventsEnabled = true;
+	stage.mouseMoveOutside = false;	
+    
+    // TOUCH
+	createjs.Touch.enable(stage);
+    
+    // web fonts preloader
+    WebFont.load({
+          custom: { families: ['apple_chancerychancery'] },  
+          active: function () {
+               createText();
+          }
+    });    
+    
+    function createText() {
+        
+		myTxt = new createjs.Text(txt, 'normal 20px apple_chancerychancery', '#000000');
+        myTxt.x = 445;
+		myTxt.y = 450;
+		myTxt.lineWidth = 0;
+		myTxt.regY = Math.round( myTxt.getBounds().height );
+        myTxt.rotation = -45;
+		myTxt.outline  = false;
+        stage.addChild(myTxt);  
+        
+        stage.update();
+    }
+    
+    //createjs.Ticker.useRAF = true;     
+    stage.update();
+	
+	
+	$('ul.settings li input').bind('change keyup', function(){
+		var _this = $( this ), rel = _this.attr('rel'), val = _this.val();
+		if( rel != undefined && rel != null ){
+			
+			if( rel == 'text' ){
+				myTxt.text = getVal( val );
+				myTxt.regY = Math.round( myTxt.getBounds().height );
+			}else if( rel == 'x' )  myTxt.x = val;
+			else if( rel == 'y' )  myTxt.y = val;
+			else if( rel == 'rotation' )  myTxt.rotation = val;
+			else if( rel == 'scaleX' )  myTxt.scaleX = val;
+			else if( rel == 'scaleY' )  myTxt.scaleY = val;
+			else if( rel == 'skewX' )  myTxt.skewX = val;
+			else if( rel == 'skewY' )  myTxt.skewY = val;
+			
+			stage.update();
+		}
+	});
+	
+}
+
+function getVal( val ){
+	var str = '';
+	for( var i = 0; i < val.length; i++ ){
+		str += ( val.substr( i, 1 ) + ' ' );
+	}
+	return str;
+}
+
+
+// Init
+window.addEventListener('load', init, false);
+
+</script>
+</body>
+</html>

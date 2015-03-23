@@ -1,0 +1,110 @@
+/* RESET */
+html,body,div,span,applet,object,iframe,h1,h2,h3,h4,h5,h6,p,blockquote,pre,a,abbr,acronym,address,big,cite,code,del,dfn,em,img,ins,kbd,q,s,samp,small,strike,strong,sub,sup,tt,var,b,u,i,center,dl,dt,dd,ol,ul,li,fieldset,form,label,legend,table,caption,tbody,tfoot,thead,tr,th,td,article,aside,canvas,details,embed,figure,figcaption,footer,header,hgroup,menu,nav,output,ruby,section,summary,time,mark,audio,video{margin:0;padding:0;border:0;font-size:100%;font:inherit;vertical-align:baseline}
+article,aside,details,figcaption,figure,footer,header,hgroup,menu,nav,section{display:block}
+body{line-height:1}
+ol,ul{list-style:none}
+blockquote,q{quotes:none}
+blockquote:before,blockquote:after,q:before,q:after{content:'';content:none}
+table{border-collapse:collapse;border-spacing:0}
+
+/* GLOBAL */
+*{-moz-box-sizing:border-box;-webkit-box-sizing:border-box;box-sizing:border-box;margin:0;padding:0;border:0;outline:0;vertical-align:baseline;text-decoration:none;list-style:none}
+.floatFixer {display:block; height:0; clear:both; visibility:hidden; font-size:0; margin:0;	padding:0; line-height:0;}
+.clearfix:before, .clearfix:after {clear:both; display:table; content:""; font-size:0; height:0; visibility:hidden;}
+*:first-child+html .clearfix { zoom: 1; } /* IE7 */
+
+/* FONT FACE */
+
+@font-face {
+    font-family: '00611Regular';
+    src: url('00611.eot');
+    src: url('00611.eot') format('embedded-opentype'),
+         url('00611.woff2') format('woff2'),
+         url('00611.woff') format('woff'),
+         url('00611.ttf') format('truetype'),
+         url('00611.svg#00611Regular') format('svg');
+}
+
+@font-face {
+    font-family: 'amertyperegular';
+    src: url('font/nakis/amertype-webfont.eot');
+    src: url('font/nakis/amertype-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/nakis/amertype-webfont.woff') format('woff'),
+         url('font/nakis/amertype-webfont.ttf') format('truetype'),
+         url('font/nakis/amertype-webfont.svg#amertyperegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+@font-face {
+	font-family: 'GothamRounded-Book';
+	src: url('font/nakis/gothamroundedbook.eot');
+	src: url('font/nakis/gothamroundedbook.eot?#iefix') format('embedded-opentype'),
+			 url('font/nakis/gothamroundedbook.woff') format('woff'),
+			 url('font/nakis/gothamroundedbook.ttf') format('truetype'),
+			 url('font/nakis/gothamroundedbook.svg#gothamroundedbook') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'HoboStd';
+	src: url('font/nakis/hobostd.eot');
+	src: url('font/nakis/hobostd.eot?#iefix') format('embedded-opentype'),
+			 url('font/nakis/hobostd.woff') format('woff'),
+			 url('font/nakis/hobostd.ttf') format('truetype'),
+			 url('font/nakis/hobostd.svg#hobostd') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'SnellRoundhand-BlackScript';
+	src: url('font/nakis/snellroundhandblackscript.eot');
+	src: url('font/nakis/snellroundhandblackscript.eot?#iefix') format('embedded-opentype'),
+			 url('font/nakis/snellroundhandblackscript.woff') format('woff'),
+			 url('font/nakis/snellroundhandblackscript.ttf') format('truetype'),
+			 url('font/nakis/snellroundhandblackscript.svg#snellroundhandblackscript') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+    font-family: 'apple_chancerychancery';
+    src: url('font/nakis/apple_chancery-webfont.eot');
+    src: url('font/nakis/apple_chancery-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/nakis/apple_chancery-webfont.woff') format('woff'),
+         url('font/nakis/apple_chancery-webfont.ttf') format('truetype'),
+         url('font/nakis/apple_chancery-webfont.svg#apple_chancerychancery') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'balloonbold';
+    src: url('font/nakis/balloon_bold-webfont.eot');
+    src: url('font/nakis/balloon_bold-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/nakis/balloon_bold-webfont.woff') format('woff'),
+         url('font/nakis/balloon_bold-webfont.ttf') format('truetype'),
+         url('font/nakis/balloon_bold-webfont.svg#balloonbold') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+@font-face {
+    font-family: 'brush455_btregular';
+    src: url('font/nakis/brush_455-webfont.eot');
+    src: url('font/nakis/brush_455-webfont.eot?#iefix') format('embedded-opentype'),
+         url('font/nakis/brush_455-webfont.woff') format('woff'),
+         url('font/nakis/brush_455-webfont.ttf') format('truetype'),
+         url('font/nakis/brush_455-webfont.svg#brush455_btregular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
+body, html{ padding:20px; }
+input{ border:1px solid;  width:200px; height:25px; margin-bottom:5px; }
+.wrapper{ width:568px; height:498px; background:url(../assets/back.jpg) no-repeat; border:1px solid; }

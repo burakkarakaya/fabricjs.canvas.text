@@ -1,0 +1,9 @@
+@font-face {
+    font-family: '00611Regular';
+    src: url('00611.eot');
+    src: url('00611.eot') format('embedded-opentype'),
+         url('00611.woff2') format('woff2'),
+         url('00611.woff') format('woff'),
+         url('00611.ttf') format('truetype'),
+         url('00611.svg#00611Regular') format('svg');
+}
